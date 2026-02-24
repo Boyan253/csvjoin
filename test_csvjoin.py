@@ -13,3 +13,16 @@ def test_left_join_keeps_unmatched_left():
     _, rows = csvjoin.join(LEFT, RIGHT, "id", how="left")
     assert len(rows) == 2
     assert rows[1] == {"id": "2", "name": "grace"}
+
+
+def test_outer_join_adds_unmatched_right():
+    _, rows = csvjoin.join(LEFT, RIGHT, "id", how="outer")
+    ids = sorted(r["id"] for r in rows)
+    assert ids == ["1", "2", "3"]
+
+def test_clashing_columns_get_a_suffix():
+    left = [{"id": "1", "name": "ada"}]
+    right = [{"id": "1", "name": "lovelace"}]
+    fields, rows = csvjoin.join(left, right, "id")
+    assert fields == ["id", "name", "name_r"]
+    assert rows[0]["name_r"] == "lovelace"
