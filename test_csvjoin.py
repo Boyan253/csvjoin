@@ -26,3 +26,9 @@ def test_clashing_columns_get_a_suffix():
     fields, rows = csvjoin.join(left, right, "id")
     assert fields == ["id", "name", "name_r"]
     assert rows[0]["name_r"] == "lovelace"
+
+
+def test_duplicate_keys_produce_a_row_each():
+    right = [{"id": "1", "city": "a"}, {"id": "1", "city": "b"}]
+    _, rows = csvjoin.join(LEFT, right, "id")
+    assert len(rows) == 2
