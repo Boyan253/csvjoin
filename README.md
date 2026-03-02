@@ -24,3 +24,8 @@ python csvjoin.py users.csv orders.csv -k user_id --how outer
 | `outer` | every row of both files |
 
 Duplicate keys behave like SQL: two matches on the right produce two rows.
+
+## Column collisions
+
+If both files have a `name` column, the right-hand one becomes `name_r`.
+Change it with `--suffix`.
