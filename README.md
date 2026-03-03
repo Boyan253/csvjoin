@@ -29,3 +29,10 @@ Duplicate keys behave like SQL: two matches on the right produce two rows.
 
 If both files have a `name` column, the right-hand one becomes `name_r`.
 Change it with `--suffix`.
+
+## Tests
+
+```
+pip install pytest
+pytest
+```
