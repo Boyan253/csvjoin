@@ -5,6 +5,8 @@ import argparse
 import csv
 import sys
 
+__version__ = "0.1.0"
+
 
 def index_by(rows, key):
     """Group rows by key value, preserving duplicates."""
@@ -66,6 +68,8 @@ def read_csv(path, delimiter):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--version", action="version",
+                    version="%(prog)s " + __version__)
     ap.add_argument("left")
     ap.add_argument("right")
     ap.add_argument("-k", "--key", required=True, help="column present in both files")
