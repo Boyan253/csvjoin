@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csvjoin"
+version = "0.1.0"
+description = "SQL-style join of two CSV files on a shared key column, without a database."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/Boyan253/csvjoin"
+
+[project.scripts]
+csvjoin = "csvjoin:main"
+
+[tool.setuptools]
+py-modules = ["csvjoin"]
